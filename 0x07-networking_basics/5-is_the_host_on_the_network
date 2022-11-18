@@ -3,9 +3,11 @@
 # That only shows listening sockets
 # That shows the PID and name of the program to which each socket belongs
 
-if (($# != 1))
+#echo "ArgNum: $#"
+if [[ $# != 1 || $1 == "" ]]
+
 then 
 	echo "Usage: 5-is_the_host_on_the_network {IP_ADDRESS}"
 else
-	ping -c 5 $1
+	ping -c 5 "$1"
 fi
