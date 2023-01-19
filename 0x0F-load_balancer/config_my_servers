@@ -1,0 +1,2 @@
+cat 0-custom_http_response_header | ssh ubuntu@54.210.137.174 "cat >> custom_http_response_header && chmod u+x custom_http_response_header && ./custom_http_response_header"
+# cat 0-custom_http_response_header | ssh ubuntu@35.174.211.147 "cat >> custom_http_response_header && chmod u+x custom_http_response_header && ./custom_http_response_header"

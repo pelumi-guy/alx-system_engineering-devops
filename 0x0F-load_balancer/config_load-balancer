@@ -1,0 +1,2 @@
+cat 1-install_load_balancer | ssh ubuntu@34.139.20.231 "cat >> install_load_balancer  && chmod u+x install_load_balancer && ./install_load_balancer"
+
