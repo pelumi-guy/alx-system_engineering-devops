@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+servers=("54.210.137.174" "35.174.211.147")
+
+for server in ${servers[@]}; 
+do
+    cat checker.pub | ssh ubuntu@$server "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys"
+done

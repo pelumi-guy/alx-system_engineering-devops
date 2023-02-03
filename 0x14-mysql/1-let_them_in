@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+servers=("54.210.137.174" "35.174.211.147")
+sql_query="CREATE USER IF NOT EXISTS 'holberton_user'@'localhost' IDENTIFIED BY 'projectcorrection280hbtn'"
+for server in ${servers[@]}; 
+do
+	#ssh ubuntu@$server 'sudo mysql -e "$sql_query"'
+	echo "sudo mysql -e $sql_query"
+done
