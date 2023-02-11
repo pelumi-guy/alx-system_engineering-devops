@@ -10,6 +10,7 @@ if __name__ == '__main__':
     employeeId = sys.argv[1]
     baseUrl = "https://jsonplaceholder.typicode.com/users"
     url = baseUrl + "/" + employeeId
+    file_name = '{}.csv'.format(employeeId)
 
     response = requests.get(url)
     employeeName = response.json().get('name')
@@ -17,31 +18,22 @@ if __name__ == '__main__':
     todoUrl = url + "/todos"
     response = requests.get(todoUrl)
     tasks = response.json()
-#    done = 0
-#    done_tasks = []
 
-#    print ('response (tasks):', tasks)
+#    csv_file = open('USER_ID.csv', 'w')
+#    csv_writer = csv.writer(csv_file)
+
 #    for task in tasks:
-#        if task.get('completed'):
-#            done_tasks.append(task)
-#            done += 1
-#
-#    print("Employee {} is done with tasks({}/{}):"
-#          .format(employeeName, done, len(tasks)))
-#
-#    for task in done_tasks:
-#        print("\t {}".format(task.get('title')))
+#        row = []
+#        row.append(employeeId)
+#        row.append(employeeName)
+#        row.append(task.get('completed'))
+#        row.append(task.get('title'))
+#        csv_writer.writerow(row)
 
-    csv_file = open('USER_ID.csv', 'w')
-    csv_writer = csv.writer(csv_file)
+#    csv_file.close()
 
-#    count = 0
+with open(file_name, 'w') as fd:
     for task in tasks:
-        row = []
-        row.append(employeeId)
-        row.append(employeeName)
-        row.append(task.get('completed'))
-        row.append(task.get('title'))
-        csv_writer.writerow(row)
-
-    csv_file.close()
+        fd.write('"{}","{}","{}","{}"\n'
+                 .format(employeeId, employeeName,
+                         task.get('completed'), task.get('title')))
