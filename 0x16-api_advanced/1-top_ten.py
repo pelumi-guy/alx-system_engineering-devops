@@ -20,7 +20,8 @@ def top_ten(subreddit):
     params = {'limit': 10}
     url = 'https://www.reddit.com/r/{}/hot/.json'.format(subreddit)
 
-    response = get(url, headers=user_agent, allow_redirects=False, params=params)
+    response = get(url, headers=user_agent,
+                   allow_redirects=False, params=params)
     results = response.json()
 
     try:
