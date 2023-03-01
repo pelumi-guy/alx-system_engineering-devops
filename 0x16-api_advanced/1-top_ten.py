@@ -1,33 +1,33 @@
 #!/usr/bin/python3
+
 """
-Top Ten
+prints the titles of the first 10 hot posts listed for a given subreddit
 """
 
 from requests import get
-import json
 
 
 def top_ten(subreddit):
     """
-    a function that queries the Reddit API and prints the titles
-    of the first 10 hot posts listed for a given subreddit.
+    function that queries the Reddit API and prints the titles of the first
+    10 hot posts listed for a given subreddit
     """
 
     if subreddit is None or not isinstance(subreddit, str):
-        print('None')
+        print("None")
 
     user_agent = {'User-agent': 'Google Chrome Version 81.0.4044.129'}
     params = {'limit': 10}
     url = 'https://www.reddit.com/r/{}/hot/.json'.format(subreddit)
-    response = get(url, headers=user_agent,
-                   allow_redirects=False, params=params)
+
+    response = get(url, headers=user_agent, params=params)
+    results = response.json()
 
     try:
-        results = response.json().get('data').get('children')
-        for post in results:
-            print(post['data']['title'])
-    except Exception:
-        print('None')
+        my_data = results.get('data').get('children')
 
-# if __name__ == '__main__':
-#    top_ten('dankmemes')
+        for i in my_data:
+            print(i.get('data').get('title'))
+
+    except Exception:
+        print("None")
