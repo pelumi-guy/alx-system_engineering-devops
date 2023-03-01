@@ -6,6 +6,7 @@ Top Ten
 from requests import get
 import json
 
+
 def top_ten(subreddit):
     """
     a function that queries the Reddit API and prints the titles
@@ -18,15 +19,13 @@ def top_ten(subreddit):
     user_agent = {'User-agent': 'Google Chrome Version 81.0.4044.129'}
     url = 'https://www.reddit.com/r/{}/top.json?limit=10'.format(subreddit)
     response = get(url, headers=user_agent, allow_redirects=False)
-    results = response.json().get('data').get('children')
-
 
     try:
-
+        results = response.json().get('data').get('children')
         for post in results:
             print(post['data']['title'])
     except Exception:
-        return None
+        print('None')
 
-#if __name__ == '__main__':
+# if __name__ == '__main__':
 #    top_ten('dankmemes')
