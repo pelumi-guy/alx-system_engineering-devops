@@ -17,7 +17,7 @@ def top_ten(subreddit):
         print('None')
 
     user_agent = {'User-agent': 'Google Chrome Version 81.0.4044.129'}
-    url = 'https://www.reddit.com/r/{}/top.json?limit=10'.format(subreddit)
+    url = 'https://www.reddit.com/r/{}/hot.json?limit=10'.format(subreddit)
     response = get(url, headers=user_agent, allow_redirects=False)
 
     try:
