@@ -14,7 +14,7 @@ def top_ten(subreddit):
     """
 
     if subreddit is None or not isinstance(subreddit, str):
-        return None
+        print('None')
 
     user_agent = {'User-agent': 'Google Chrome Version 81.0.4044.129'}
     url = 'https://www.reddit.com/r/{}/top.json?limit=10'.format(subreddit)
